@@ -1,6 +1,7 @@
 :root {
     --nav-bg-color: rgb(73, 79, 82);
     --color-1: #fff;
+    --color-2: yellow;
 }
 
 .App {

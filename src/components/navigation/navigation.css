@@ -6,3 +6,25 @@
     color: var(--color-1);
     background-color: var(--nav-bg-color);
 }
+
+.nav-links {
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+.navigation h3,
+.navigation li {
+    color: var(--color-1);
+}
+
+.navigation h3:hover,
+.navigation li:hover {
+    color: var(--color-2);
+}
+
+a {
+    text-decoration: none;
+}
