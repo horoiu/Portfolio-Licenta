@@ -1,0 +1,15 @@
+.footer {
+    height: 5vh;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--nav-bg-color);
+    color: var(--color-1);
+}
+
+.footer a {
+    font-size: 17px;
+    text-decoration: none;
+    color: var(--color-1);
+}

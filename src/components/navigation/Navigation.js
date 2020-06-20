@@ -1,27 +1,27 @@
 import React from "react";
 import "./navigation.css";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navigation() {
     return (
         <nav className="navigation">
-            <Link to="/">
+            <NavLink to="/">
                 <h3>DevSpace</h3>
-            </Link>
+            </NavLink>
             <ul className="nav-links">
-                <Link to="/about">
+                <NavLink to="/about" activeClassName="active">
                     <li>About</li>
-                </Link>
-                <Link to="/portfolio">
+                </NavLink>
+                <NavLink to="/portfolio" activeClassName="active">
                     <li>Portfolio</li>
-                </Link>
-                <Link to="/resume">
+                </NavLink>
+                <NavLink to="/resume" activeClassName="active">
                     <li>Resume</li>
-                </Link>
-                <Link to="/contact">
+                </NavLink>
+                <NavLink to="/contact" activeClassName="active">
                     <li>Contact</li>
-                </Link>
+                </NavLink>
             </ul>
         </nav>
     );

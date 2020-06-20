@@ -7,6 +7,8 @@ import About from "./pages/about/about";
 import Portfolio from "./pages/portfolio/portfolio";
 import Contact from "./pages/contact/contact";
 import Resume from "./pages/resume/resume";
+import notFound from "./pages/notFound/notFound";
+import Footer from "./components/footer/footer";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -21,7 +23,9 @@ function App() {
                     <Route path="/portfolio" component={Portfolio} />
                     <Route path="/resume" component={Resume} />
                     <Route path="/contact" component={Contact} />
+                    <Route component={notFound} />
                 </Switch>
+                <Footer />
             </div>
         </Router>
     );
