@@ -7,7 +7,7 @@ function Footer() {
     return (
         <div className="footer">
             <h5>
-                ©{year} <Link to="/"> DevSpace.ro </Link>. All rights reserved.
+                ©{year} <Link to="/"> DevSpace.ro</Link>. All rights reserved.
             </h5>
         </div>
     );
