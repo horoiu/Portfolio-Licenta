@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function Navigation() {
     return (
-        <nav className="navigation">
+        <nav className="navigation fixed-top mb-5">
             <NavLink to="/">
                 <h3>DevSpace</h3>
             </NavLink>

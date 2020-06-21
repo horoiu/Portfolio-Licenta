@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const year = new Date().getFullYear();
 function Footer() {
     return (
-        <footer className="footer">
-            <h5>
+        <footer className="footer fixed-bottom">
+            <p>
                 ©{year} <Link to="/"> DevSpace.ro</Link>. All rights reserved.
-            </h5>
+            </p>
         </footer>
     );
 }

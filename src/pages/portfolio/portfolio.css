@@ -1,0 +1,13 @@
+main.portfolio {
+    /* display: flex; */
+    /* width: 70vw; */
+}
+
+button.btn {
+    background-color: var(--nav-bg-color);
+}
+
+button.btn a {
+    text-decoration: none;
+    color: var(--color-1);
+}

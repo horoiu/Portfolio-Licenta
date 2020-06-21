@@ -3,6 +3,9 @@ header {
     text-align: center;
     padding-top: 300px;
     color: var(--color-3);
+    height: 100vh;
+    background-image: url("../../img/bg-mastHead.jpg");
+    background-size: cover;
 }
 
 header h1 {
