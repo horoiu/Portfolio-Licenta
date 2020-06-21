@@ -1,6 +1,7 @@
-main.portfolio {
-    /* display: flex; */
-    /* width: 70vw; */
+.portfolio {
+    height: 100%;
+    background-image: url("../../img/bg-portfolio.jpg");
+    background-repeat: repeat;
 }
 
 button.btn {
@@ -10,4 +11,7 @@ button.btn {
 button.btn a {
     text-decoration: none;
     color: var(--color-1);
+}
+.card {
+    height: 100%;
 }
