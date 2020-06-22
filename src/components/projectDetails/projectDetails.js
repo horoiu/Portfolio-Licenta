@@ -7,10 +7,7 @@ import { Button } from "react-bootstrap";
 class ProjectDetails extends Component {
     render() {
         const {
-            id_proiect,
-            fisier_imagine,
             imagine_mare,
-            id_categ,
             nume_proiect,
             prezentare,
             data_proiect,
@@ -20,11 +17,10 @@ class ProjectDetails extends Component {
         // console.log("projectDetails: this.props=", this.props.data);
 
         const convertDate = (date) => {
-            let year = new Date(date).getFullYear();
-            let month = new Date(date).getMonth();
-            let day = new Date(date).getDay();
+            const year = new Date(date).getFullYear();
+            const month = new Date(date).getMonth();
 
-            let data = `${day}-${month}-${year}`;
+            let data = `${month}-${year}`;
             return data;
         };
 
@@ -40,30 +36,37 @@ class ProjectDetails extends Component {
             <main className="projectDetails mt-5 pt-4">
                 <div className="container">
                     <div className="row d-flex">
-                        <div className="col-md-5 mt-5">
+                        <div className="col-lg-6 mt-5">
                             <img
                                 className="project_img"
                                 src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${imagine_mare}`}
+                                alt="Project main page scrrenshot."
                             ></img>
                         </div>
-                        <div className="col-md-7 mb-4">
-                            <div className="p-4">
-                                <h1 className="mb-3 mt-3">{nume_proiect}</h1>
-                                <h3>
-                                    <span className="font-weight-bold">
-                                        Date:{"  "}
-                                    </span>
-                                    {data}
-                                </h3>
-                                <h3>Technology: {nume_categorie}</h3>
 
-                                <h3>{link}</h3>
-                                <h3>{prezentare}</h3>
+                        <div className="col-lg-6 mb-4">
+                            <div className="p-4">
+                                <h2 className="text-center text-md-left product-name font-weight-bold mb-1 ml-xl-0 ml-4 ">
+                                    <strong>{nume_proiect}</strong>
+                                </h2>
+                                <hr />
+                                <p className="ml-xl-0 ml-4 text-md-left">
+                                    {prezentare}
+                                </p>
+                                <hr />
+                                <p className="ml-xl-0 ml-4 text-md-left">
+                                    <strong>Technology: </strong>
+                                    {nume_categorie}
+                                </p>
+                                <p className="ml-xl-0 ml-4 text-md-left">
+                                    <strong>Date: </strong>
+                                    {data}
+                                </p>
+                                <hr />
                                 <div className="row d-flex justify-content-around my-4">
                                     <Button
                                         variant="success"
                                         size="lg"
-                                        className="waves-effect"
                                         onClick={() => openProject({ link })}
                                     >
                                         Run Project

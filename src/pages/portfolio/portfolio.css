@@ -1,17 +1,7 @@
 .portfolio {
-    height: 100vh;
-    background-image: url("../../img/bg-portfolio.jpg");
+    /* background-image: url("../../img/bg-portfolio.jpg");
+    width: 100vw;
     background-repeat: repeat;
-}
-
-/* button.btn {
-    background-color: var(--nav-bg-color);
-} */
-
-button.btn a {
-    text-decoration: none;
-    color: var(--color-1);
-}
-.card {
-    height: 100%;
+    background-size: cover; */
+    background-color: azure;
 }

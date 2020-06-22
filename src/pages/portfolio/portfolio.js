@@ -21,33 +21,31 @@ function Portfolio() {
     };
 
     return (
-        <div className="portfolio">
-            <main className="row mt-4 mb-4 ml-5">
-                {items.map((item, index) => (
-                    <Card
-                        key={index}
-                        className="card m-4 ml-5 col-md-3"
-                        style={{ width: "18rem" }}
-                    >
-                        <Card.Img
-                            variant="top"
-                            src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${item.fisier_imagine}`}
-                        />
-                        <Card.Body>
-                            <Card.Title>{item.nume_proiect}</Card.Title>
-                            <Card.Text>{item.nume_categorie}</Card.Text>
-                            <Link
-                                to={`/portfolio/project=${item.id_proiect}`}
-                                data={item[index]}
-                                className="btn btn-secondary btn-lg"
-                            >
-                                More details
-                            </Link>
-                        </Card.Body>
-                    </Card>
-                ))}
-            </main>
-        </div>
+        <main className=" portfolio row mt-4 mb-4 ml-5">
+            {items.map((item, index) => (
+                <Card
+                    key={index}
+                    className="card m-4 ml-5 col-md-3"
+                    style={{ width: "10rem" }}
+                >
+                    <Card.Img
+                        variant="top"
+                        src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${item.fisier_imagine}`}
+                    />
+                    <Card.Body>
+                        <Card.Title>{item.nume_proiect}</Card.Title>
+                        <Card.Text>{item.nume_categorie}</Card.Text>
+                        <Link
+                            to={`/portfolio/project=${item.id_proiect}`}
+                            data={item[index]}
+                            className="btn btn-secondary btn-lg"
+                        >
+                            More details
+                        </Link>
+                    </Card.Body>
+                </Card>
+            ))}
+        </main>
     );
 }
 
