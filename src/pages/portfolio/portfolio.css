@@ -1,12 +1,12 @@
 .portfolio {
-    height: 100%;
+    height: 100vh;
     background-image: url("../../img/bg-portfolio.jpg");
     background-repeat: repeat;
 }
 
-button.btn {
+/* button.btn {
     background-color: var(--nav-bg-color);
-}
+} */
 
 button.btn a {
     text-decoration: none;

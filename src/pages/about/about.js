@@ -1,12 +1,8 @@
 import React from "react";
-// import "./about.css";
+import "./about.css";
 
 function About() {
-    return (
-        <div className="about">
-            <h1>About Page</h1>
-        </div>
-    );
+    return <main className="about"></main>;
 }
 
 export default About;
