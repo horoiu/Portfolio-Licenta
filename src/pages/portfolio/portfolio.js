@@ -21,12 +21,12 @@ function Portfolio() {
     };
 
     return (
-        <main className=" portfolio row mt-4 mb-4 ml-5">
+        <main className=" portfolio row mt-4 mb-5 ml-5">
             {items.map((item, index) => (
                 <Card
                     key={index}
-                    className="card m-4 ml-5 col-md-3"
-                    style={{ width: "10rem" }}
+                    className="card m-4 ml-5 mt-4 col-md-3 hoverable"
+                    style={{ width: "18rem" }}
                 >
                     <Card.Img
                         variant="top"
@@ -38,7 +38,7 @@ function Portfolio() {
                         <Link
                             to={`/portfolio/project=${item.id_proiect}`}
                             data={item[index]}
-                            className="btn btn-secondary btn-lg"
+                            className="btn btn-info btn-lg"
                         >
                             More details
                         </Link>

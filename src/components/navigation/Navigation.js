@@ -2,28 +2,40 @@ import React from "react";
 import "./navigation.css";
 
 import { NavLink } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 function Navigation() {
     return (
-        <nav className="navigation fixed-top mb-5">
-            <NavLink to="/">
-                <h3>DevSpace</h3>
-            </NavLink>
-            <ul className="nav-links">
-                <NavLink to="/about" activeClassName="active">
-                    <li>About</li>
-                </NavLink>
-                <NavLink to="/portfolio" activeClassName="active">
-                    <li>Portfolio</li>
-                </NavLink>
-                <NavLink to="/resume" activeClassName="active">
-                    <li>Resume</li>
-                </NavLink>
-                <NavLink to="/contact" activeClassName="active">
-                    <li>Contact</li>
-                </NavLink>
-            </ul>
-        </nav>
+        <Navbar
+            collapseOnSelect
+            expand="sm"
+            bg="dark"
+            variant="dark"
+            className="fixed-top mb-5"
+        >
+            <LinkContainer to="/">
+                <Navbar.Brand href="#home">DevSpace</Navbar.Brand>
+            </LinkContainer>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto"></Nav>
+                <Nav>
+                    <LinkContainer to="/about">
+                        <Nav.Link>About</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/portfolio">
+                        <Nav.Link>Portfolio</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/resume">
+                        <Nav.Link>Resume</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/contact">
+                        <Nav.Link>Contact</Nav.Link>
+                    </LinkContainer>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     );
 }
 
