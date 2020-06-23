@@ -51,7 +51,7 @@ class Contact extends Component {
                                                 </button>
                                                 <span className="ml-auto text-white align-self-center">
                                                     <i className="icon-phone mr-2"></i>
-                                                    251 546 9442
+                                                    +40 740 123456
                                                 </span>
                                             </div>
                                         </div>
