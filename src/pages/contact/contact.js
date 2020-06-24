@@ -64,7 +64,7 @@ class Contact extends Component {
                                 <div className="gmap_canvas mt-4">
                                     <iframe
                                         title="geolocation"
-                                        className="mt-5"
+                                        className="mt-5 col-lg-12 col-md-8"
                                         width="700"
                                         height="430"
                                         id="gmap_canvas"

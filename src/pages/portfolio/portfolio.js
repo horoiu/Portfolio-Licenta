@@ -25,7 +25,7 @@ function Portfolio() {
             {items.map((item, index) => (
                 <Card
                     key={index}
-                    className="card m-4 ml-5 mt-4 col-md-3 hoverable"
+                    className="card m-4 ml-5 mt-5 col-md-3 hoverable"
                     style={{ width: "18rem" }}
                 >
                     <Card.Img
