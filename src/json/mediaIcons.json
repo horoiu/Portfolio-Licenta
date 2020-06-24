@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/DevSpace-100433821363759",
+        "icon": "facebook-square"
+    },
+    {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/marianhoroiu/",
+        "icon": "linkedin"
+    },
+    {
+        "name": "GitHub",
+        "url": "https://github.com/horoiu",
+        "icon": "github-square"
+    }
+]

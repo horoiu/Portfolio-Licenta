@@ -63,17 +63,17 @@
     }
 }
 
-@media (max-width: 767px) {
-    .contact4 .contact-box {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-}
-
 @media (max-width: 1023px) {
     .contact4 .right-image {
         position: relative;
         bottom: -95px;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact4 .contact-box {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
@@ -82,14 +82,20 @@
 .mapouter {
     position: relative;
     text-align: right;
-    height: 500px;
-    width: 700px;
 }
 .gmap_canvas {
     overflow: hidden;
     background: none !important;
-    width: 700px;
-    height: 430px;
+
     width: 100%;
     height: 100%;
+}
+
+.mediaIcons {
+    width: 100%;
+    list-style-type: none;
+}
+
+.mediaIcons a {
+    color: #1c2a48;
 }
