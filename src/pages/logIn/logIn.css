@@ -14,6 +14,7 @@ button[disabled] {
     border-color: lightgrey !important;
 }
 
+/* this is to do the trick for 'type='password' not working */
 #password {
     -webkit-text-security: disc;
     -text-security: disc;
