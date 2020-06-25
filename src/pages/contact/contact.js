@@ -14,7 +14,11 @@ class Contact extends Component {
         let mediaList = this.state.list.map(function (item) {
             return (
                 <li key={item.name} className="">
-                    <a href={item.url} target="_blank">
+                    <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <MDBIcon
                             fab
                             icon={item.icon}

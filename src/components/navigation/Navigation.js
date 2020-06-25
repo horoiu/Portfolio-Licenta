@@ -1,9 +1,8 @@
 import React from "react";
 import "./navigation.css";
 
-import { NavLink } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 
 function Navigation() {
     return (
@@ -32,6 +31,9 @@ function Navigation() {
                     </LinkContainer>
                     <LinkContainer to="/contact">
                         <Nav.Link>Contact</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/login">
+                        <Nav.Link>Log-In</Nav.Link>
                     </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
