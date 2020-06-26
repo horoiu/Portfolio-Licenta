@@ -19,3 +19,16 @@ button[disabled] {
     -webkit-text-security: disc;
     -text-security: disc;
 }
+
+#user {
+    background: url("../../img/user-icon.png") no-repeat 10px 8px;
+    background-size: 18px 18px;
+}
+
+#password {
+    background: url("../../img/lock-icon.png") no-repeat 10px 8px;
+    background-size: 18px 18px;
+}
+.form-group input {
+    padding-left: 35px;
+}

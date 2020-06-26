@@ -50,23 +50,23 @@ class LogIn extends Component {
                         onSubmit={this.handleSubmit}
                     >
                         <div className="form-group">
-                            <label>Username</label>
                             <input
                                 type="text"
                                 className="form-control"
                                 id="user"
                                 name="user"
+                                placeholder="Username"
                                 onChange={(e) => this.handleChange(e, "user")}
                                 value={this.state.user}
                             ></input>
                         </div>
                         <div className="form-group">
-                            <label>Password</label>
                             <input
-                                // type="password"  // if not commented, it will autocomplete both input fields
+                                // type="password" // if not commented, it will autocomplete both input fields
                                 className="form-control"
                                 id="password"
                                 name="password"
+                                placeholder="Password"
                                 autoComplete="off"
                                 onChange={(e) => this.handleChange(e, "pass")}
                                 value={this.state.pass}
