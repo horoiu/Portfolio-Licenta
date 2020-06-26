@@ -35,6 +35,9 @@ function Navigation() {
                     <LinkContainer to="/login">
                         <Nav.Link>Log-In</Nav.Link>
                     </LinkContainer>
+                    <LinkContainer to="/addProject">
+                        <Nav.Link>Add Project</Nav.Link>
+                    </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
