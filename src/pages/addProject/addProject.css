@@ -1,5 +1,5 @@
 .addProject {
-    height: 100vh;
+    height: 90vh;
     background-color: whitesmoke;
     padding-top: 25px;
     top: 5rem;
@@ -26,6 +26,9 @@
 #date {
     background: url("../../img/date-icon.png") no-repeat 10px 8px;
     background-size: 18px 18px;
+}
+#addProject-form > div:nth-child(3) > div {
+    display: block !important;
 }
 
 #description {

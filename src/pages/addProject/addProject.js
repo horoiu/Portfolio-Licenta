@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import "./addProject.css";
 
 import { MDBContainer } from "mdbreact";
+import DatePicker from "react-datepicker";
 
 class addProject extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class addProject extends Component {
             name: "",
             technology: "",
             date: "",
+            startDate: Date.now(),
             description: "",
             link: "",
             imgS: "",
@@ -22,9 +24,16 @@ class addProject extends Component {
     // updates the state value depending on which input field
     // got modified by sending the 'attribute'
     handleChange = (e, attr) => {
-        const newState = { ...this.state };
-        newState[attr] = e.target.value;
-        this.setState(newState);
+        if (attr === "date") {
+            console.log(e);
+            this.setState({
+                startDate: e,
+            });
+        } else {
+            const newState = { ...this.state };
+            newState[attr] = e.target.value;
+            this.setState(newState);
+        }
     };
 
     // the logic to be implemented after the form is filled and submit button was pressed
@@ -34,7 +43,7 @@ class addProject extends Component {
             `The data you entered is: 
             Project name: ${this.state.name} 
             Tehnology: ${this.state.technology} 
-            Date: ${this.state.date}
+            Date: ${this.state.startDate}
             Description: ${this.state.description}
             Link: ${this.state.link}
             Image small: ${this.state.imgS}
@@ -48,7 +57,7 @@ class addProject extends Component {
         if (
             this.state.name === "" ||
             this.state.technology === "" ||
-            this.state.date === "" ||
+            this.state.startDate === "" ||
             this.state.description === "" ||
             this.state.link === "" ||
             this.state.imgS === "" ||
@@ -63,7 +72,7 @@ class addProject extends Component {
         return (
             <main className="addProject container-fluid mt-5">
                 <MDBContainer>
-                    <h2 className="h2-responsive">
+                    <h2 className="h2-responsive mt-3 mb-5">
                         Add new project to your Portfolio
                     </h2>
                     <form
@@ -96,15 +105,18 @@ class addProject extends Component {
                             ></input>
                         </div>
                         <div className="form-group">
-                            <input
-                                type="text"
+                            <DatePicker
                                 className="form-control"
                                 id="date"
                                 name="date"
-                                placeholder="Date"
+                                selected={this.state.startDate}
                                 onChange={(e) => this.handleChange(e, "date")}
-                                value={this.state.date}
-                            ></input>
+                                peekNextMonth
+                                showMonthDropdown
+                                showYearDropdown
+                                dropdownMode="select"
+                                value={this.state.startDate}
+                            />
                         </div>
                         <div className="form-group">
                             <textarea
@@ -132,7 +144,7 @@ class addProject extends Component {
                         </div>
                         <div className="form-group">
                             <input
-                                type="text"
+                                type="file"
                                 className="form-control"
                                 id="imgS"
                                 name="imgS"
@@ -143,7 +155,7 @@ class addProject extends Component {
                         </div>
                         <div className="form-group">
                             <input
-                                type="text"
+                                type="file"
                                 className="form-control"
                                 id="imgB"
                                 name="imgB"
