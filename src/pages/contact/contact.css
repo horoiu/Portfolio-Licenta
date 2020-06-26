@@ -79,6 +79,21 @@
 
 /* ///////// */
 
+#username {
+    background: url("../../img/username-icon.png") no-repeat 10px 8px;
+    background-size: 18px 18px;
+}
+
+#email {
+    background: url("../../img/email-icon.png") no-repeat 10px 8px;
+    background-size: 18px 18px;
+}
+
+#message {
+    background: url("../../img/message-icon.png") no-repeat 10px 8px;
+    background-size: 18px 18px;
+}
+
 .mapouter {
     position: relative;
     text-align: right;

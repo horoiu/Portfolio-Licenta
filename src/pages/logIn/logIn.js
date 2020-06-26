@@ -43,9 +43,9 @@ class LogIn extends Component {
         return (
             <main className="log-in container-fluid mt-5">
                 <MDBContainer>
-                    <h3>Log In</h3>
+                    <h2 className="h2-responsive">Log In</h2>
                     <form
-                        className="col-xl-6 col-md-6 col-sm-6 mt-3 mb-5 py-4 hoverable"
+                        className="col-xl-4 col-lg-5 col-md-6 col-sm-8 mt-3 mb-5 py-4 hoverable"
                         id="logIn-form"
                         onSubmit={this.handleSubmit}
                     >

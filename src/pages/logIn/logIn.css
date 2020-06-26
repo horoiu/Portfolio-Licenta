@@ -29,6 +29,7 @@ button[disabled] {
     background: url("../../img/lock-icon.png") no-repeat 10px 8px;
     background-size: 18px 18px;
 }
-.form-group input {
+.form-group input,
+.form-group textarea {
     padding-left: 35px;
 }

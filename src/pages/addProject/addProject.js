@@ -61,12 +61,14 @@ class addProject extends Component {
 
     render() {
         return (
-            <main className="log-in container-fluid mt-5">
+            <main className="addProject container-fluid mt-5">
                 <MDBContainer>
-                    <h3>Add new project to your Portfolio</h3>
+                    <h2 className="h2-responsive">
+                        Add new project to your Portfolio
+                    </h2>
                     <form
-                        className="col-xl-6 col-md-6 col-sm-6 mt-3 mb-5 py-4 hoverable"
-                        id="logIn-form"
+                        className="col-xl-6 col-md-8 col-sm-8 mt-3 mb-2 py-4 hoverable"
+                        id="addProject-form"
                         onSubmit={this.handleSubmit}
                     >
                         <div className="form-group">
@@ -105,17 +107,17 @@ class addProject extends Component {
                             ></input>
                         </div>
                         <div className="form-group">
-                            <input
+                            <textarea
                                 type="text"
                                 className="form-control"
                                 id="description"
                                 name="description"
-                                placeholder="description"
+                                placeholder="Description"
                                 onChange={(e) =>
                                     this.handleChange(e, "description")
                                 }
                                 value={this.state.description}
-                            ></input>
+                            ></textarea>
                         </div>
                         <div className="form-group">
                             <input
@@ -123,7 +125,7 @@ class addProject extends Component {
                                 className="form-control"
                                 id="link"
                                 name="link"
-                                placeholder="link"
+                                placeholder="Link"
                                 onChange={(e) => this.handleChange(e, "link")}
                                 value={this.state.link}
                             ></input>

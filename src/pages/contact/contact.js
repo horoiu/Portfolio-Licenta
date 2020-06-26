@@ -37,9 +37,9 @@ class Contact extends Component {
                         <div className="container">
                             <div className="col-lg-6 contact-box mb-4 mb-md-0">
                                 <div className="">
-                                    <h1 className="title h1-responsive font-weight-light text-white mt-2">
+                                    <h2 className="title h2-responsive font-weight-light text-white mt-2">
                                         Contact Us
-                                    </h1>
+                                    </h2>
                                     <form className="mt-5">
                                         <Row>
                                             <div className="col-lg-12">
@@ -47,7 +47,8 @@ class Contact extends Component {
                                                     <input
                                                         className="form-control text-white"
                                                         type="text"
-                                                        placeholder="name"
+                                                        placeholder="Name"
+                                                        id="username"
                                                     />
                                                 </div>
                                             </div>
@@ -56,7 +57,8 @@ class Contact extends Component {
                                                     <input
                                                         className="form-control text-white"
                                                         type="email"
-                                                        placeholder="email address"
+                                                        placeholder="Email address"
+                                                        id="email"
                                                     />
                                                 </div>
                                             </div>
@@ -65,7 +67,8 @@ class Contact extends Component {
                                                     <textarea
                                                         className="form-control text-white"
                                                         rows="3"
-                                                        placeholder="message"
+                                                        placeholder="Message"
+                                                        id="message"
                                                     ></textarea>
                                                 </div>
                                             </div>
