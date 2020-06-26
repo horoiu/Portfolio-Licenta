@@ -14,14 +14,12 @@ class LogIn extends Component {
         };
     }
 
-    // updates the state value depending on which input field got modified
-    handleInputChange = (e) => {
-        // console.log(e.target);
-        if (e.target.id === "user") {
-            this.setState({ user: e.target.value });
-        } else {
-            this.setState({ pass: e.target.value });
-        }
+    // updates the state value depending on which input field
+    // got modified by sending the 'attribute'
+    handleChange = (e, attr) => {
+        const newState = { ...this.state };
+        newState[attr] = e.target.value;
+        this.setState(newState);
     };
 
     // the logic to be implemented after the form is filled and submit button was pressed
@@ -35,7 +33,7 @@ class LogIn extends Component {
     // check if input fields are empty and returns a boolean:
     //      if empty, the 'submit' button will be disabled
     isValid() {
-        if (this.state.user === "" && this.state.pass === "") {
+        if (this.state.user === "" || this.state.pass === "") {
             return false;
         }
         return true;
@@ -58,7 +56,7 @@ class LogIn extends Component {
                                 className="form-control"
                                 id="user"
                                 name="user"
-                                onChange={this.handleInputChange}
+                                onChange={(e) => this.handleChange(e, "user")}
                                 value={this.state.user}
                             ></input>
                         </div>
@@ -70,7 +68,7 @@ class LogIn extends Component {
                                 id="password"
                                 name="password"
                                 autoComplete="off"
-                                onChange={this.handleInputChange}
+                                onChange={(e) => this.handleChange(e, "pass")}
                                 value={this.state.pass}
                             ></input>
                         </div>
