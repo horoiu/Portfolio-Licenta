@@ -14,7 +14,7 @@ function Project({ match }) {
     const id = parseInt(match.params.id_proiect);
 
     const fetchItem = async () => {
-        const data = await fetch("http://localhost:4000/proiecte");
+        const data = await fetch("http://localhost:4000/projects");
         const item = await data.json();
 
         item.data.forEach((elem) => {

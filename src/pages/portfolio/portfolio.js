@@ -13,10 +13,10 @@ function Portfolio() {
     const [items, setItems] = useState([]);
 
     const fetchItems = async () => {
-        const data = await fetch("http://localhost:4000/proiecte");
+        const data = await fetch("http://localhost:4000/projects");
         const items = await data.json();
 
-        console.log("Portfolio.js: items.data=", items.data);
+        // console.log("Portfolio.js: items.data=", items.data);
         setItems(items.data);
     };
 

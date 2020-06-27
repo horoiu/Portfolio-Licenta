@@ -7,10 +7,10 @@ class LogIn extends Component {
     constructor(props) {
         super(props);
 
-        // inintializind empty state for 'user' and 'pass'
+        // inintializind empty state for 'user' and 'password'
         this.state = {
             user: "",
-            pass: "",
+            password: "",
         };
     }
 
@@ -24,16 +24,57 @@ class LogIn extends Component {
 
     // the logic to be implemented after the form is filled and submit button was pressed
     handleSubmit = (e) => {
+        // console.log("Log-In, handleSubmit() this.state:", this.state);
+        fetch("http://localhost:4000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            // We convert the React state to JSON and send it as the POST body
+            body: JSON.stringify(this.state),
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then((data) => {
+                let response = data.data[0];
+                // console.log("Response 'login fetch':", response);
+                if (!response) {
+                    console.log("No response from 'login fetch'.");
+                    console.log("No matches. REJECTED");
+
+                    // go set cookie for NOT LOGED-IN
+                } else {
+                    console.log(
+                        this.state.user,
+                        this.state.password,
+                        response.user,
+                        response.password
+                    );
+                    if (
+                        response.user === this.state.user &&
+                        response.password === this.state.password
+                    ) {
+                        console.log("Name and password matches. LOGED-IN");
+                        // go set cookie for LOGED-IN
+                    } else {
+                        console.log("No matches. REJECTED");
+                        // go set cookie for NOT LOGED-IN
+                    }
+                }
+            })
+            .catch((err) => console.log("Error from 'login fetch':", err));
+
+        //to prevent submitting the form and hard reload after submit
+        // only for development mode
         e.preventDefault();
-        alert(
-            `The username you entered is: ${this.state.user} and the password is: ${this.state.pass}`
-        );
     };
 
     // check if input fields are empty and returns a boolean:
     //      if empty, the 'submit' button will be disabled
     isValid() {
-        if (this.state.user === "" || this.state.pass === "") {
+        if (this.state.user === "" || this.state.password === "") {
             return false;
         }
         return true;
@@ -68,8 +109,10 @@ class LogIn extends Component {
                                 name="password"
                                 placeholder="Password"
                                 autoComplete="off"
-                                onChange={(e) => this.handleChange(e, "pass")}
-                                value={this.state.pass}
+                                onChange={(e) =>
+                                    this.handleChange(e, "password")
+                                }
+                                value={this.state.password}
                             ></input>
                         </div>
 
