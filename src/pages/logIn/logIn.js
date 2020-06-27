@@ -24,8 +24,7 @@ class LogIn extends Component {
 
     // the logic to be implemented after the form is filled and submit button was pressed
     handleSubmit = (e) => {
-        // const history = useHistory();
-        // console.log("Log-In, handleSubmit() this.state:", this.state);
+        console.log("Log-In, handleSubmit() this.state:", this.state);
         fetch("http://localhost:4000/login", {
             method: "POST",
             headers: {
@@ -62,7 +61,6 @@ class LogIn extends Component {
                         Cookies.setCookie("portfolio-app", "loged-in", 1);
 
                         // redirect to HomePage after sucessfuly Log-in
-                        this.props.history.push("/");
                     } else {
                         console.log("No matches. REJECTED");
                         // go set cookie for NOT LOGED-IN
@@ -73,7 +71,7 @@ class LogIn extends Component {
 
         //to prevent submitting the form and hard reload after submit
         // only for development mode
-        // e.preventDefault();
+        e.preventDefault();
     };
 
     // check if input fields are empty and returns a boolean:

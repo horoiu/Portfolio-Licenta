@@ -8,8 +8,34 @@ import { MDBIcon } from "mdbreact";
 class Contact extends Component {
     constructor(props) {
         super(props);
-        this.state = { list: mediaList };
+
+        this.state = {
+            list: mediaList,
+            username: "",
+            email: "",
+            message: "",
+        };
     }
+
+    // updates the state value depending on which input field
+    // got modified by sending the 'attribute'
+    handleChange = (e, attr) => {
+        const newState = { ...this.state };
+        newState[attr] = e.target.value;
+        this.setState(newState);
+    };
+
+    isValid() {
+        if (
+            this.state.username === "" ||
+            this.state.email === "" ||
+            this.state.message === ""
+        ) {
+            return false;
+        }
+        return true;
+    }
+
     render() {
         let mediaList = this.state.list.map(function (item) {
             return (
@@ -45,20 +71,38 @@ class Contact extends Component {
                                             <div className="col-lg-12">
                                                 <div className="form-group mt-2">
                                                     <input
-                                                        className="form-control text-white"
                                                         type="text"
-                                                        placeholder="Name"
+                                                        className="form-control text-white"
                                                         id="username"
+                                                        name="username"
+                                                        placeholder="Name"
+                                                        onChange={(e) =>
+                                                            this.handleChange(
+                                                                e,
+                                                                "username"
+                                                            )
+                                                        }
+                                                        value={
+                                                            this.state.username
+                                                        }
                                                     />
                                                 </div>
                                             </div>
                                             <div className="col-lg-12">
                                                 <div className="form-group mt-2">
                                                     <input
-                                                        className="form-control text-white"
                                                         type="email"
-                                                        placeholder="Email address"
+                                                        className="form-control text-white"
                                                         id="email"
+                                                        name="email"
+                                                        placeholder="Email address"
+                                                        onChange={(e) =>
+                                                            this.handleChange(
+                                                                e,
+                                                                "email"
+                                                            )
+                                                        }
+                                                        value={this.state.email}
                                                     />
                                                 </div>
                                             </div>
@@ -66,16 +110,27 @@ class Contact extends Component {
                                                 <div className="form-group mt-2">
                                                     <textarea
                                                         className="form-control text-white"
-                                                        rows="3"
-                                                        placeholder="Message"
                                                         id="message"
+                                                        name="message"
+                                                        placeholder="Message"
+                                                        rows="3"
+                                                        onChange={(e) =>
+                                                            this.handleChange(
+                                                                e,
+                                                                "message"
+                                                            )
+                                                        }
+                                                        value={
+                                                            this.state.message
+                                                        }
                                                     ></textarea>
                                                 </div>
                                             </div>
                                             <div className="col-lg-12 d-flex align-items-center mt-2">
                                                 <button
+                                                    disabled={!this.isValid()}
                                                     type="submit"
-                                                    className="btn bg-white text-inverse px-3 py-2"
+                                                    className="btn btn-success px-3 py-2"
                                                 >
                                                     <span> Submit</span>
                                                 </button>
