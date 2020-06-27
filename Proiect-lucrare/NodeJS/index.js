@@ -1,9 +1,10 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
 
 const app = express();
-const id_proiect = "";
+app.use(cors());
 
 //////////////////////////////////////////////////////////
 const connection = mysql.createConnection({
@@ -14,30 +15,44 @@ const connection = mysql.createConnection({
 });
 //////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+// const SELECT_ALL_PROJECTS_QUERY = "SELECT * FROM admin";
+
+// const connection = mysql.createConnection({
+//     host: "192.168.64.2",
+//     // port: 3306,
+//     user: "root",
+//     password: "password1",
+//     database: "test",
+//     // timeout: 60000,
+// });
+//////////////////////////////////////////////////////////
+
 connection.connect((err) => {
     if (err) {
         console.log("ERROR while connecting to DB: ", err);
         return err;
     }
 });
-
 // console.log(connection);
 
-app.use(cors());
-
 app.get("/", (req, res) => {
-    res.send("Hello from the category server");
+    res.send("Hello from the MainPage of NodeJS server");
 });
 
-app.get("/proiecte", (req, res) => {
-    const SELECT_ALL_PROJECTS_QUERY =
-        "SELECT * FROM proiect INNER JOIN categorie ON categorie.id_categ=proiect.id_categ;";
+////////////////////////////////////
+
+// get projects from DataBase
+app.get("/projects", (req, res) => {
+    const SELECT_ALL_PROJECTS_QUERY = `SELECT * FROM proiect INNER JOIN categorie ON categorie.id_categ=proiect.id_categ;`;
 
     connection.query(SELECT_ALL_PROJECTS_QUERY, (err, results) => {
         if (err) {
             return res.send(err);
         } else {
-            console.log("results:", res);
+            // console.log("results:", res);
             return res.json({
                 data: results,
             });
@@ -46,38 +61,59 @@ app.get("/proiecte", (req, res) => {
     });
 });
 
-app.listen(4000, () => {
-    console.log(`Server listening on port 4000`);
+////////////////////////////////////
+
+// get technology from DataBase
+
+app.get("/technology", (req, res) => {
+    // const SELECT_ALL_TECHNOLOGIES_QUERY = `SELECT * FROM categorie;`;
+    const SELECT_ALL_TECHNOLOGIES_QUERY = `SELECT id_categ AS id, nume_categorie AS technology FROM portfolio.categorie;`;
+
+    connection.query(SELECT_ALL_TECHNOLOGIES_QUERY, (err, results) => {
+        if (err) {
+            return res.send(err);
+        } else {
+            // console.log("results:", res);
+            return res.json({
+                data: results,
+            });
+        }
+        connection.end();
+    });
 });
 
-// to be implemented later on - get a single project based on ID
-// app.get("/proiect", (req, res) => {
-//     // const SELECT_SINGLE_PROJECT_QUERY = `SELECT * FROM proiect WHERE id_proiect=${id_proiect}`;
-//     // https://stackoverflow.com/questions/53984761/how-to-pass-id-from-a-form-in-html-using-nodejs-mysql
+////////////////////////////////////
 
-//     connection.query(SELECT_SINGLE_PROJECT_QUERY, (err, results) => {
-//         if (err) {
-//             return res.send(err);
-//         } else {
-//             console.log("results:", res);
-//             return res.json({
-//                 data: results,
-//             });
-//         }
-//         connection.end();
-//     });
-// });
+//////// login to DataBase
 
-// app.get("/categ/add", (req, res) => {
-//   const { nume } = req.query;
-//   const INSERT_USERS_QUERY = `INSERT INTO categorie (nume_categorie) VALUES('${nume}')`;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-//   connection.query(INSERT_USERS_QUERY, (err, results) => {
-//       if (err) {
-//           return res.send(err);
-//       } else {
-//           return res.send("successfully added category");
-//       }
-//       connection.end();
-//   });
-// });
+app.post("/login", (req, res) => {
+    const user = req.body.user;
+    const password = req.body.password;
+    let token = "Authenticated";
+
+    // console.log(`Username = '${user}', password = '${password}'`);
+
+    const SELECT_CHECK_USER_QUERY = `SELECT user AS user, password AS password FROM admin WHERE (user = '${user}') AND (password = '${password}')`;
+
+    connection.query(SELECT_CHECK_USER_QUERY, (err, results) => {
+        if (err) {
+            return res.send(err);
+        } else {
+            return res.json({
+                data: results,
+            });
+        }
+        connection.end();
+    });
+});
+
+////////////////////////////////////
+
+////////////////////////////////////
+
+app.listen(4000, () => {
+    console.log(`NodeJS Server listening on port 4000`);
+});

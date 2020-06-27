@@ -21,6 +21,7 @@
 #technology {
     background: url("../../img/technology-icon.png") no-repeat 10px 8px;
     background-size: 18px 18px;
+    padding-left: 35px;
 }
 
 #date {

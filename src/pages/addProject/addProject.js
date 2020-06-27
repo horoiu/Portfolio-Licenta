@@ -3,6 +3,7 @@ import "./addProject.css";
 
 import { MDBContainer } from "mdbreact";
 import DatePicker from "react-datepicker";
+import Select from "./technology";
 
 class addProject extends Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class addProject extends Component {
         }
     };
 
-    // the logic to be implemented after the form is filled and submit button was pressed
+    // the logic to be implemented after the form is filled and Submit button was pressed
     handleSubmit = (e) => {
         e.preventDefault();
         alert(
@@ -92,17 +93,12 @@ class addProject extends Component {
                             ></input>
                         </div>
                         <div className="form-group">
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="technology"
-                                name="technology"
-                                placeholder="Technology"
+                            <Select
                                 onChange={(e) =>
                                     this.handleChange(e, "technology")
                                 }
                                 value={this.state.technology}
-                            ></input>
+                            ></Select>
                         </div>
                         <div className="form-group">
                             <DatePicker
