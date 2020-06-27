@@ -1,19 +1,19 @@
 import React, { Component, useState } from "react";
 import "./logIn.css";
 
+import * as Cookies from "../../services/cookies";
+// import { browserHistory } from "react-router-dom";
 import { MDBContainer } from "mdbreact";
 
 class LogIn extends Component {
     constructor(props) {
         super(props);
-
         // inintializind empty state for 'user' and 'password'
         this.state = {
             user: "",
             password: "",
         };
     }
-
     // updates the state value depending on which input field
     // got modified by sending the 'attribute'
     handleChange = (e, attr) => {
@@ -24,6 +24,7 @@ class LogIn extends Component {
 
     // the logic to be implemented after the form is filled and submit button was pressed
     handleSubmit = (e) => {
+        // const history = useHistory();
         // console.log("Log-In, handleSubmit() this.state:", this.state);
         fetch("http://localhost:4000/login", {
             method: "POST",
@@ -58,6 +59,10 @@ class LogIn extends Component {
                     ) {
                         console.log("Name and password matches. LOGED-IN");
                         // go set cookie for LOGED-IN
+                        Cookies.setCookie("portfolio-app", "loged-in", 1);
+
+                        // redirect to HomePage after sucessfuly Log-in
+                        this.props.history.push("/");
                     } else {
                         console.log("No matches. REJECTED");
                         // go set cookie for NOT LOGED-IN
@@ -68,7 +73,7 @@ class LogIn extends Component {
 
         //to prevent submitting the form and hard reload after submit
         // only for development mode
-        e.preventDefault();
+        // e.preventDefault();
     };
 
     // check if input fields are empty and returns a boolean:
