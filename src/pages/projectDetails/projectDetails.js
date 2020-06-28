@@ -86,11 +86,12 @@ class ProjectDetails extends Component {
                                     </Link>
                                 </div>
                                 <div className="row d-flex justify-content-around my-4">
-                                    {/* button to be connected with isAuth.js so it will be visible 
-                                    only to logged-in users */}
+                                    {/* button is connected with isAuth.js so it will toggle  
+                                    display-none and dispplay-block; will be visible
+                                     only to logged-in users */}
                                     <Button
                                         className={
-                                            isAuth() ? "visible" : "invisible"
+                                            isAuth() ? "d-block" : "d-none"
                                         }
                                         variant="danger"
                                         size="lg"

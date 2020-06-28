@@ -1,6 +1,7 @@
 import React from "react";
 import "./navigation.css";
 
+import isAuth from "../../services/isAuth";
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav, Navbar } from "react-bootstrap";
 
@@ -35,7 +36,10 @@ function Navigation() {
                     <LinkContainer to="/login">
                         <Nav.Link>Log-In</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/addProject">
+                    <LinkContainer
+                        to="/addProject"
+                        className={isAuth() ? "d-block" : "d-none"}
+                    >
                         <Nav.Link>Add Project</Nav.Link>
                     </LinkContainer>
                 </Nav>
