@@ -1,8 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "./logIn.css";
 
 import * as Cookies from "../../services/cookies";
-// import { browserHistory } from "react-router-dom";
 import { MDBContainer } from "mdbreact";
 
 class LogIn extends Component {

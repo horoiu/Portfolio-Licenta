@@ -1,15 +1,15 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "./addProject.css";
 
 import { MDBContainer } from "mdbreact";
 import DatePicker from "react-datepicker";
-import Select from "./technology";
+// import Select from "./technology";
 
 class addProject extends Component {
     constructor(props) {
         super(props);
 
-        // inintializind empty state for 'user' and 'pass'
+        // initializing empty state for all form fields
         this.state = {
             name: "",
             technology: "",
@@ -19,8 +19,17 @@ class addProject extends Component {
             link: "",
             imgS: "",
             imgB: "",
+            technologies: [],
         };
     }
+
+    fetchItems = async () => {
+        const data = await fetch("http://localhost:4000/technology");
+        const items = await data.json();
+
+        // console.log("Technology.js: items.data=", items.data);
+        this.setState({ technologies: items.data });
+    };
 
     // updates the state value depending on which input field
     // got modified by sending the 'attribute'
@@ -35,6 +44,10 @@ class addProject extends Component {
             newState[attr] = e.target.value;
             this.setState(newState);
         }
+    };
+
+    handleSelectChange = (technology) => {
+        this.setState({ technology });
     };
 
     // the logic to be implemented after the form is filled and Submit button was pressed
@@ -69,6 +82,10 @@ class addProject extends Component {
         return true;
     }
 
+    componentWillMount() {
+        this.fetchItems();
+    }
+
     render() {
         return (
             <main className="addProject container-fluid mt-5">
@@ -93,12 +110,23 @@ class addProject extends Component {
                             ></input>
                         </div>
                         <div className="form-group">
-                            <Select
+                            <select
+                                className="browser-default custom-select form-control input"
+                                id="technology"
+                                name="technology"
                                 onChange={(e) =>
                                     this.handleChange(e, "technology")
                                 }
-                                value={this.state.technology}
-                            ></Select>
+                            >
+                                {this.state.technologies.map((item) => (
+                                    <option
+                                        key={item.id}
+                                        value={item.technology}
+                                    >
+                                        {item.technology}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         <div className="form-group">
                             <DatePicker
