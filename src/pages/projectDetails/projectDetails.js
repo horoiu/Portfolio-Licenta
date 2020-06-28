@@ -34,9 +34,29 @@ class ProjectDetails extends Component {
             win.focus();
         };
 
-        const deleteProject = (id) => {
+        const deleteProject = (e, id) => {
+            e.preventDefault();
             console.log("Delete button - Project ID:", id);
-            alert(isAuth());
+
+            fetch("http://localhost:4000/delProject", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                // We convert the React state to JSON and send it as the DELETE body
+                body: JSON.stringify(id),
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log("Data from Delete fetch:", data.data);
+                })
+                .catch((err) => console.log("Error from Delete fetch:", err));
+
+            //to prevent submitting the form and hard reload after submit
+            // only for development mode
         };
 
         return (
@@ -95,8 +115,8 @@ class ProjectDetails extends Component {
                                         }
                                         variant="danger"
                                         size="lg"
-                                        onClick={() =>
-                                            deleteProject({ id_proiect })
+                                        onClick={(e) =>
+                                            deleteProject(e, { id_proiect })
                                         }
                                     >
                                         Delete Project

@@ -90,6 +90,29 @@ app.put("/addProject", (req, res) => {
 
 ////////////////////////////////////
 
+// DELETE project from DataBase
+
+app.delete("/delProject", (req, res) => {
+    const id = req.body.id_proiect;
+    console.log("ID proiect:", id);
+
+    const DELETE_PROJECT_QUERY = `DELETE FROM proiect WHERE id_proiect='${id}';`;
+
+    connection.query(DELETE_PROJECT_QUERY, (err, results) => {
+        if (err) {
+            return res.send(err);
+        } else {
+            // console.log("results:", res);
+            return res.json({
+                data: results,
+            });
+        }
+        connection.end();
+    });
+});
+
+////////////////////////////////////////////////////////////////////////
+
 // GET technology from DataBase
 
 app.get("/technology", (req, res) => {

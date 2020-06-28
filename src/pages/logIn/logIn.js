@@ -69,7 +69,8 @@ class LogIn extends Component {
 
         //to prevent submitting the form and hard reload after submit
         // only for development mode
-        e.preventDefault();
+        // e.preventDefault();
+        window.location.reload(false);
     };
 
     // check if input fields are empty and returns a boolean:

@@ -8,7 +8,8 @@ export function setCookie(cname, cvalue, hrs) {
 
 export function deleteCookie() {
     document.cookie =
-        "log-in=yes; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+        "portfolio-app=loged-in; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+    window.location.reload(false);
 }
 
 export default setCookie;

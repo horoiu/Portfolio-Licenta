@@ -4,6 +4,7 @@ import "./navigation.css";
 import isAuth from "../../services/isAuth";
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav, Navbar } from "react-bootstrap";
+import { deleteCookie } from "../../services/cookies";
 
 function Navigation() {
     return (
@@ -33,8 +34,18 @@ function Navigation() {
                     <LinkContainer to="/contact">
                         <Nav.Link>Contact</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/login">
+                    <LinkContainer
+                        to="/login"
+                        className={isAuth() ? "d-none" : "d-block"}
+                    >
                         <Nav.Link>Log-In</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer
+                        to="/"
+                        className={isAuth() ? "d-block" : "d-none"}
+                        onClick={deleteCookie}
+                    >
+                        <Nav.Link>Log-Out</Nav.Link>
                     </LinkContainer>
                     <LinkContainer
                         to="/addProject"
