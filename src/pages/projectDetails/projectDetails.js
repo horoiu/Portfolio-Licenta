@@ -57,6 +57,7 @@ class ProjectDetails extends Component {
 
             //to prevent submitting the form and hard reload after submit
             // only for development mode
+            window.location.replace("/portfolio");
         };
 
         return (

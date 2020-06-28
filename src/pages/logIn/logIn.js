@@ -11,6 +11,7 @@ class LogIn extends Component {
         this.state = {
             user: "",
             password: "",
+            errMessage: "",
         };
     }
     // updates the state value depending on which input field
@@ -23,6 +24,7 @@ class LogIn extends Component {
 
     // the logic to be implemented after the form is filled and submit button was pressed
     handleSubmit = (e) => {
+        e.preventDefault();
         // console.log("Log-In, handleSubmit() this.state:", this.state);
         fetch("http://localhost:4000/login", {
             method: "POST",
@@ -42,7 +44,8 @@ class LogIn extends Component {
                 if (!response) {
                     // console.log("No response from 'login fetch'.");
                     // console.log("No matches. REJECTED");
-                    // go set cookie for NOT LOGED-IN
+                    // show error message
+                    this.logInReject();
                 } else {
                     console.log(
                         this.state.user,
@@ -59,18 +62,15 @@ class LogIn extends Component {
                         Cookies.setCookie("portfolio-app", "loged-in", 1);
 
                         // redirect to HomePage after sucessfuly Log-in
+                        window.location.replace("/");
                     } else {
-                        console.log("No matches. REJECTED");
-                        // go set cookie for NOT LOGED-IN
+                        // console.log("No matches. REJECTED");
+                        // show error message
+                        this.logInReject();
                     }
                 }
             })
             .catch((err) => console.log("Error from 'login fetch':", err));
-
-        //to prevent submitting the form and hard reload after submit
-        // only for development mode
-        // e.preventDefault();
-        window.location.reload(false);
     };
 
     // check if input fields are empty and returns a boolean:
@@ -80,6 +80,14 @@ class LogIn extends Component {
             return false;
         }
         return true;
+    }
+
+    logInReject() {
+        this.setState({ user: "" });
+        this.setState({ password: "" });
+        this.setState({
+            errMessage: "Incorrect username or password !!! ",
+        });
     }
 
     render() {
@@ -105,7 +113,6 @@ class LogIn extends Component {
                         </div>
                         <div className="form-group">
                             <input
-                                // type="password" // if not commented, it will autocomplete both input fields
                                 className="form-control"
                                 id="password"
                                 name="password"
@@ -127,6 +134,9 @@ class LogIn extends Component {
                         >
                             Submit
                         </button>
+                        <h6 className="h6-responsive text-danger font-weight-bold">
+                            {this.state.errMessage}
+                        </h6>
                     </form>
                 </MDBContainer>
             </main>
