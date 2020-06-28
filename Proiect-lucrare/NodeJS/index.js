@@ -4,7 +4,6 @@ const cors = require("cors");
 const mysql = require("mysql");
 
 const app = express();
-app.use(cors());
 
 //////////////////////////////////////////////////////////
 const connection = mysql.createConnection({
@@ -13,8 +12,6 @@ const connection = mysql.createConnection({
     password: "password",
     database: "portfolio",
 });
-//////////////////////////////////////////////////////////
-
 //////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////
@@ -42,9 +39,12 @@ app.get("/", (req, res) => {
     res.send("Hello from the MainPage of NodeJS server");
 });
 
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 ////////////////////////////////////
 
-// get projects from DataBase
+// GET projects from DataBase
 app.get("/projects", (req, res) => {
     const SELECT_ALL_PROJECTS_QUERY = `SELECT * FROM proiect INNER JOIN categorie ON categorie.id_categ=proiect.id_categ;`;
 
@@ -63,10 +63,36 @@ app.get("/projects", (req, res) => {
 
 ////////////////////////////////////
 
-// get technology from DataBase
+// PUT project to DataBase
+app.put("/addProject", (req, res) => {
+    const { name, description, link, imgB, imgS, id_technology } = req.body;
+
+    // need to convert date format coming from request to match the date format to be wrtitten on DB
+    const dateValue = req.body.date;
+    const date = new Date(dateValue).getTime() / 1000;
+
+    const PUT_PROJECT_QUERY = `INSERT INTO proiect ( fisier_imagine, imagine_mare, id_categ, nume_proiect, prezentare, data_proiect,link)
+    VALUES
+    ( '${imgS}', '${imgB}','${id_technology}', '${name}', '${description}', FROM_UNIXTIME('${date}','%Y-%m-%d'), '${link}' );`;
+
+    connection.query(PUT_PROJECT_QUERY, (err, results) => {
+        if (err) {
+            return res.send(err);
+        } else {
+            // console.log("results:", res);
+            return res.json({
+                data: results,
+            });
+        }
+        connection.end();
+    });
+});
+
+////////////////////////////////////
+
+// GET technology from DataBase
 
 app.get("/technology", (req, res) => {
-    // const SELECT_ALL_TECHNOLOGIES_QUERY = `SELECT * FROM categorie;`;
     const SELECT_ALL_TECHNOLOGIES_QUERY = `SELECT id_categ AS id, nume_categorie AS technology FROM portfolio.categorie;`;
 
     connection.query(SELECT_ALL_TECHNOLOGIES_QUERY, (err, results) => {
@@ -86,15 +112,10 @@ app.get("/technology", (req, res) => {
 
 //////// login to DataBase
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
 app.post("/login", (req, res) => {
     const user = req.body.user;
     const password = req.body.password;
-    let token = "Authenticated";
-
-    // console.log(`Username = '${user}', password = '${password}'`);
+    // let token = "Authenticated";
 
     const SELECT_CHECK_USER_QUERY = `SELECT user AS user, password AS password FROM admin WHERE (user = '${user}') AND (password = '${password}')`;
 

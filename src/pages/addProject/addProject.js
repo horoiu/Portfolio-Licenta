@@ -27,7 +27,6 @@ class addProject extends Component {
         const data = await fetch("http://localhost:4000/technology");
         const items = await data.json();
 
-        // console.log("Technology.js: items.data=", items.data);
         this.setState({ technologies: items.data });
     };
 
@@ -35,15 +34,8 @@ class addProject extends Component {
     // got modified by sending the 'attribute'
     handleChange = (e, attr) => {
         if (attr === "date") {
-            // console.log(e);
-            this.setState({
-                date: e,
-            });
-
-            let date = this.state.date;
-            console.log("DATE:", date);
+            this.setState({});
         } else if (attr === "technology") {
-            // console.log("inside if-else:", e.target);
             var index = e.target.selectedIndex;
             var optionElement = e.target.childNodes[index];
             var option = optionElement.getAttribute("data-id");
@@ -78,21 +70,13 @@ class addProject extends Component {
             .catch((err) => console.log(err)); // Do something with the error
 
         e.preventDefault();
-
-        // alert(
-        //     `The data you entered is:
-        //     Project name: ${this.state.name}
-        //     Tehnology: ${this.state.technology}
-        //     Date: ${this.state.date}
-        //     Description: ${this.state.description}
-        //     Link: ${this.state.link}
-        //     Image small: ${this.state.imgS}
-        //     Image big: ${this.state.imgB}`
-        // );
     };
 
     // check if input fields are empty and returns a boolean:
     //      if empty, the 'submit' button will be disabled
+    //      we are filtering on "id_technology" for 'null' value as this is the
+    //     initial selected option, and user needs to click on select button and
+    //     select an technology
     isValid() {
         if (
             this.state.name === "" ||
