@@ -35,10 +35,13 @@ class addProject extends Component {
     // got modified by sending the 'attribute'
     handleChange = (e, attr) => {
         if (attr === "date") {
-            // console.log(e.target);
+            // console.log(e);
             this.setState({
                 date: e,
             });
+
+            let date = this.state.date;
+            console.log("DATE:", date);
         } else if (attr === "technology") {
             // console.log("inside if-else:", e.target);
             var index = e.target.selectedIndex;
@@ -94,6 +97,7 @@ class addProject extends Component {
         if (
             this.state.name === "" ||
             this.state.technology === "" ||
+            this.state.id_technology === null ||
             this.state.date === "" ||
             this.state.description === "" ||
             this.state.link === "" ||
@@ -141,6 +145,7 @@ class addProject extends Component {
                                     this.handleChange(e, "technology")
                                 }
                             >
+                                <option>Choose an technology</option>
                                 {this.state.technologies.map((item) => (
                                     <option
                                         key={item.id}
