@@ -1,3 +1,12 @@
 .active {
     font-weight: bold;
 }
+
+.not-active {
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.733);
+}
+
+.not-active:hover {
+    color: rgba(255, 255, 255, 0.533);
+}
