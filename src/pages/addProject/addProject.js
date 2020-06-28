@@ -13,13 +13,13 @@ class addProject extends Component {
         this.state = {
             name: "",
             technology: "",
-            date: "",
-            startDate: Date.now(),
+            date: Date.now(),
             description: "",
             link: "",
             imgS: "",
             imgB: "",
             technologies: [],
+            id_technology: "",
         };
     }
 
@@ -35,9 +35,18 @@ class addProject extends Component {
     // got modified by sending the 'attribute'
     handleChange = (e, attr) => {
         if (attr === "date") {
-            console.log(e);
+            // console.log(e.target);
             this.setState({
-                startDate: e,
+                date: e,
+            });
+        } else if (attr === "technology") {
+            // console.log("inside if-else:", e.target);
+            var index = e.target.selectedIndex;
+            var optionElement = e.target.childNodes[index];
+            var option = optionElement.getAttribute("data-id");
+            this.setState({
+                id_technology: option,
+                technology: e.target.value,
             });
         } else {
             const newState = { ...this.state };
@@ -52,17 +61,31 @@ class addProject extends Component {
 
     // the logic to be implemented after the form is filled and Submit button was pressed
     handleSubmit = (e) => {
+        // console.log("addProject, handleSubmit() this.state:", this.state);
+        fetch("http://localhost:4000/addProject", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Charset: "UTF-8", // Indicates the content
+            },
+            body: JSON.stringify(this.state), // We send data in JSON format
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
+            .catch((err) => console.log(err)); // Do something with the error
+
         e.preventDefault();
-        alert(
-            `The data you entered is: 
-            Project name: ${this.state.name} 
-            Tehnology: ${this.state.technology} 
-            Date: ${this.state.startDate}
-            Description: ${this.state.description}
-            Link: ${this.state.link}
-            Image small: ${this.state.imgS}
-            Image big: ${this.state.imgB}`
-        );
+
+        // alert(
+        //     `The data you entered is:
+        //     Project name: ${this.state.name}
+        //     Tehnology: ${this.state.technology}
+        //     Date: ${this.state.date}
+        //     Description: ${this.state.description}
+        //     Link: ${this.state.link}
+        //     Image small: ${this.state.imgS}
+        //     Image big: ${this.state.imgB}`
+        // );
     };
 
     // check if input fields are empty and returns a boolean:
@@ -71,7 +94,7 @@ class addProject extends Component {
         if (
             this.state.name === "" ||
             this.state.technology === "" ||
-            this.state.startDate === "" ||
+            this.state.date === "" ||
             this.state.description === "" ||
             this.state.link === "" ||
             this.state.imgS === "" ||
@@ -121,6 +144,7 @@ class addProject extends Component {
                                 {this.state.technologies.map((item) => (
                                     <option
                                         key={item.id}
+                                        data-id={item.id}
                                         value={item.technology}
                                     >
                                         {item.technology}
@@ -133,13 +157,13 @@ class addProject extends Component {
                                 className="form-control"
                                 id="date"
                                 name="date"
-                                selected={this.state.startDate}
+                                selected={this.state.date}
                                 onChange={(e) => this.handleChange(e, "date")}
                                 peekNextMonth
                                 showMonthDropdown
                                 showYearDropdown
                                 dropdownMode="select"
-                                value={this.state.startDate}
+                                value={this.state.date}
                             />
                         </div>
                         <div className="form-group">

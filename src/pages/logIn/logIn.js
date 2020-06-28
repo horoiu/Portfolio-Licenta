@@ -23,7 +23,7 @@ class LogIn extends Component {
 
     // the logic to be implemented after the form is filled and submit button was pressed
     handleSubmit = (e) => {
-        console.log("Log-In, handleSubmit() this.state:", this.state);
+        // console.log("Log-In, handleSubmit() this.state:", this.state);
         fetch("http://localhost:4000/login", {
             method: "POST",
             headers: {
