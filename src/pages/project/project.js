@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./project.css";
-import ProjectDetails from "../../components/projectDetails/projectDetails";
+import ProjectDetails from "../projectDetails/projectDetails";
 
 function Project({ match }) {
     // useEfect() is used to run the fechItem function once the Project component is mounted

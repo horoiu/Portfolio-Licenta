@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./projectDetails.css";
 
+import isAuth from "../../services/isAuth";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
@@ -13,6 +14,7 @@ class ProjectDetails extends Component {
             data_proiect,
             link,
             nume_categorie,
+            id_proiect,
         } = this.props.data;
         // console.log("projectDetails: this.props=", this.props.data);
 
@@ -30,6 +32,11 @@ class ProjectDetails extends Component {
             // since the 'path' is coming as an object, we need to access path.link to get the 'url'
             let win = window.open(path.link, "_blank");
             win.focus();
+        };
+
+        const deleteProject = (id) => {
+            console.log("Delete button - Project ID:", id);
+            alert(isAuth());
         };
 
         return (
@@ -77,6 +84,22 @@ class ProjectDetails extends Component {
                                     >
                                         Go back to Portfolio page
                                     </Link>
+                                </div>
+                                <div className="row d-flex justify-content-around my-4">
+                                    {/* button to be connected with isAuth.js so it will be visible 
+                                    only to logged-in users */}
+                                    <Button
+                                        className={
+                                            isAuth() ? "visible" : "invisible"
+                                        }
+                                        variant="danger"
+                                        size="lg"
+                                        onClick={() =>
+                                            deleteProject({ id_proiect })
+                                        }
+                                    >
+                                        Delete Project
+                                    </Button>
                                 </div>
                             </div>
                         </div>

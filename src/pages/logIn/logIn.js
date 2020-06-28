@@ -40,9 +40,8 @@ class LogIn extends Component {
                 let response = data.data[0];
                 // console.log("Response 'login fetch':", response);
                 if (!response) {
-                    console.log("No response from 'login fetch'.");
-                    console.log("No matches. REJECTED");
-
+                    // console.log("No response from 'login fetch'.");
+                    // console.log("No matches. REJECTED");
                     // go set cookie for NOT LOGED-IN
                 } else {
                     console.log(
@@ -55,7 +54,7 @@ class LogIn extends Component {
                         response.user === this.state.user &&
                         response.password === this.state.password
                     ) {
-                        console.log("Name and password matches. LOGED-IN");
+                        // console.log("Name and password matches. LOGED-IN");
                         // go set cookie for LOGED-IN
                         Cookies.setCookie("portfolio-app", "loged-in", 1);
 
@@ -70,7 +69,7 @@ class LogIn extends Component {
 
         //to prevent submitting the form and hard reload after submit
         // only for development mode
-        e.preventDefault();
+        // e.preventDefault();
     };
 
     // check if input fields are empty and returns a boolean:

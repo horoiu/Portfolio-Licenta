@@ -15,7 +15,7 @@ const getCookie = (cname) => {
 
 const checkCookie = () => {
     var cookie = getCookie("portfolio-app");
-    console.log(cookie);
+    // console.log(cookie);
     if (cookie === "loged-in") {
         return true;
     } else {
@@ -25,6 +25,4 @@ const checkCookie = () => {
 
 export default function isAuth() {
     return checkCookie();
-        
-    }
 }

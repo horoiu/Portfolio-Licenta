@@ -3,7 +3,6 @@ import "./addProject.css";
 
 import { MDBContainer } from "mdbreact";
 import DatePicker from "react-datepicker";
-// import Select from "./technology";
 
 class addProject extends Component {
     constructor(props) {
