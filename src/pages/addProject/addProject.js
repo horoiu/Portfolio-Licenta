@@ -55,6 +55,7 @@ class addProject extends Component {
 
     // the logic to be implemented after the form is filled and Submit button was pressed
     handleSubmit = (e) => {
+        e.preventDefault();
         // console.log("addProject, handleSubmit() this.state:", this.state);
         fetch("http://localhost:4000/addProject", {
             method: "PUT",
@@ -68,7 +69,8 @@ class addProject extends Component {
             .then((data) => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
             .catch((err) => console.log(err)); // Do something with the error
 
-        e.preventDefault();
+        // redirect to "/portfolio" page after sucessfuly adding new project
+        window.location.replace("/portfolio");
     };
 
     // check if input fields are empty and returns a boolean:
