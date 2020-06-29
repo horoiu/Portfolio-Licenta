@@ -8,7 +8,8 @@ import "./notFound.css";
 function notFound(props) {
     return (
         <div className="notFound pt-5">
-            <h1 className="h1-responsive mt-5 bold">Page Not Found</h1>
+            <h1 className="h1-responsive mt-5 bold text-black">404</h1>
+            <h2 className="h2-responsive mt-2 bold">Page Not Found</h2>
             <br></br>
             <h4 className="h4-responsive">
                 The page <span>"{props.location.pathname}"</span> does not
