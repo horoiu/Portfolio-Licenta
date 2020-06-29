@@ -1,7 +1,17 @@
 :root {
-    --nav-bg-color: rgb(73, 79, 82);
+    --nav-bg-color: #494f52;
+    --about-bg-color: #a2ccd7;
+    --resume-bg-color: #77e997;
+    --contact-bg-color: #188ef4;
+    --contact-media-icons: #1c2a48;
+    --portfolio-bg-color: #f5e6cc;
+    --addProject-bg-color: whitesmoke;
+    --logIn-bg-color: #ececec;
+    --logIn-form-color: #eae7dc;
+    --notFound--bg-col: #cafafe;
     --color-1: #fff;
     --color-2: yellow;
+    --color-btn-disabled: lightgrey;
 }
 
 .App {

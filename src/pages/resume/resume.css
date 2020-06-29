@@ -1,4 +1,4 @@
 .resume {
-    background-color: #77e997;
+    background-color: var(--resume-bg-color);
     padding-top: 1.5rem;
 }

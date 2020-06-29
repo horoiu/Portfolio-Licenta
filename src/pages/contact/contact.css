@@ -5,15 +5,6 @@
     font-weight: 300;
 }
 
-.contact4 h1,
-.contact4 h2,
-.contact4 h3,
-.contact4 h4,
-.contact4 h5,
-.contact4 h6 {
-    color: #3e4555;
-}
-
 .contact4 .font-weight-medium {
     font-weight: 500;
 }
@@ -50,7 +41,7 @@
 }
 
 .contact4.bg-info {
-    background-color: #188ef4 !important;
+    background-color: var(--contact-bg-color) !important;
 }
 
 .contact4 .text-inverse {
@@ -80,7 +71,7 @@
 /* ///////// */
 
 #contact {
-    background-color: #188ef4;
+    background-color: var(--contact-bg-color);
     height: 92vh;
 }
 
@@ -118,5 +109,5 @@
 }
 
 .mediaIcons a {
-    color: #1c2a48;
+    color: var(--contact-media-icons);
 }

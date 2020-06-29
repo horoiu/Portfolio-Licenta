@@ -1,13 +1,13 @@
 .addProject {
     height: 90vh;
-    background-color: whitesmoke;
+    background-color: var(--addProject-bg-color);
     padding-top: 25px;
     top: 5rem;
     margin: 0 auto;
 }
 
 #addProject-form {
-    background-color: white;
+    background-color: var(--color-1);
     cursor: auto;
     margin: 0 auto;
     border-radius: 8px;

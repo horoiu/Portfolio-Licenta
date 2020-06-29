@@ -1,5 +1,5 @@
 .portfolio {
-    background-color: #f5e6cc;
+    background-color: var(--portfolio-bg-color);
 }
 
 .hoverable {
@@ -12,8 +12,4 @@
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
-}
-
-.card-img {
-    /* width: 15% !important; */
 }

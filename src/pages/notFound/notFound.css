@@ -1,0 +1,17 @@
+.notFound {
+    background-color: var(--notFound--bg-col);
+    height: 96vh;
+    /* margin-top: 5rem; */
+}
+
+.notFound h1 {
+    color: red;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.notFound > h4 > span {
+    font-style: italic;
+    font-weight: bold;
+    color: red;
+}

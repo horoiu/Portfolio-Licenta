@@ -21,10 +21,12 @@ class Resume extends Component {
 
         return (
             <main className="resume mt-5">
-                <nav>
+                {/* for future project, the <nav> element will render buttons for navigation
+                between document pages */}
+                {/* <nav>
                     <button onClick={this.goToPrevPage}>Prev</button>
                     <button onClick={this.goToNextPage}>Next</button>
-                </nav>
+                </nav> */}
 
                 <div className="text-center row d-flex justify-content-center fluid mb-3">
                     <Document
