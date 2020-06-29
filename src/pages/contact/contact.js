@@ -57,7 +57,7 @@ class Contact extends Component {
         });
 
         return (
-            <main className="contact mt-5">
+            <main className="contact mt-5" id="contact">
                 <div className="bg-info contact4 overflow-hiddedn position-relative">
                     <div className="row no-gutters">
                         <div className="container">
