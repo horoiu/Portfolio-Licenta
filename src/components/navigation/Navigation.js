@@ -4,13 +4,12 @@ import "./navigation.css";
 import isAuth from "../../services/isAuth";
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav, Navbar } from "react-bootstrap";
-import { deleteCookie } from "../../services/cookies";
 
 function Navigation() {
     return (
         <Navbar
             collapseOnSelect
-            expand="sm"
+            expand="md"
             bg="dark"
             variant="dark"
             className="fixed-top mb-5"
@@ -41,9 +40,8 @@ function Navigation() {
                         <Nav.Link>Log-In</Nav.Link>
                     </LinkContainer>
                     <LinkContainer
-                        to="/"
+                        to="/logOut"
                         className={isAuth() ? "d-block" : "d-none"}
-                        onClick={deleteCookie}
                     >
                         <Nav.Link>Log-Out</Nav.Link>
                     </LinkContainer>

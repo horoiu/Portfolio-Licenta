@@ -9,6 +9,7 @@ import Resume from "../pages/resume/resume";
 import notFound from "../pages/notFound/notFound";
 import Project from "../pages/project/project";
 import LogIn from "../pages/logIn/logIn";
+import LogOut from "../pages/logOut/logOut";
 import AddProject from "../pages/addProject/addProject";
 
 class Routing extends Component {
@@ -26,6 +27,7 @@ class Routing extends Component {
                     <Route path="/resume" component={Resume} />
                     <Route path="/contact" component={Contact} />
                     <Route path="/logIn" component={LogIn} />
+                    <Route path="/logOut" component={LogOut} />
                     <Route path="/addProject" component={AddProject} />
                     <Route component={notFound} />
                 </Switch>
