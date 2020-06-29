@@ -22,8 +22,8 @@ function Portfolio() {
     };
 
     return (
-        <main className="portfolio mt-5 mb-3 ml-3 mr-2">
-            <Row className="mt-5 mb-5">
+        <main className="mt-5 ml-3 mr-2">
+            <Row className="portfolio mt-5 mb-5">
                 {items.map((item, index) => (
                     <Card
                         key={index}

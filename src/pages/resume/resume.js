@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./resume.css";
 
+// import "react-pdf/dist/Page/AnnotationLayer.css";
 import { Document, Page } from "react-pdf/dist/entry.webpack";
-import "react-pdf/dist/Page/AnnotationLayer.css";
 
 class Resume extends Component {
     state = { numPages: null, pageNumber: 1 };
@@ -20,15 +20,16 @@ class Resume extends Component {
         const { pageNumber, numPages } = this.state;
 
         return (
-            <main className="resume">
+            <main className="resume mt-5">
                 <nav>
                     <button onClick={this.goToPrevPage}>Prev</button>
                     <button onClick={this.goToNextPage}>Next</button>
                 </nav>
 
-                <div style={{ width: 600 }}>
+                <div className="text-center row d-flex justify-content-center fluid mb-3">
                     <Document
-                        file="../../../public/CV-2019.pdf"
+                        file="CV-2019.pdf"
+                        className="resume-file mt-2"
                         onLoadSuccess={this.onDocumentLoadSuccess}
                     >
                         <Page pageNumber={pageNumber} width={600} />
