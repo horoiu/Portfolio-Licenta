@@ -7,7 +7,8 @@ function Footer() {
     return (
         <footer className="footer fixed-bottom">
             <p>
-                ©{year} <Link to="/"> DevSpace.ro</Link>. All rights reserved.
+                ©{year} <Link to="/"> &#394;ev&#423;pace.ro</Link>. All rights
+                reserved.
             </p>
         </footer>
     );

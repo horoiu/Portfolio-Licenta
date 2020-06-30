@@ -15,7 +15,7 @@ function Navigation() {
             className="fixed-top mb-5"
         >
             <LinkContainer to="/">
-                <Navbar.Brand href="#home">DevSpace</Navbar.Brand>
+                <Navbar.Brand href="#home">&#394;ev&#423;pace</Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">

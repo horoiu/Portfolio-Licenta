@@ -132,7 +132,7 @@ class LogIn extends Component {
                             type="submit"
                             className="btn btn-primary btn-block"
                         >
-                            Submit
+                            Log-In
                         </button>
                         <h6 className="h6-responsive text-danger font-weight-bold">
                             {this.state.errMessage}
