@@ -68,7 +68,7 @@ class ProjectDetails extends Component {
                             <img
                                 className="project_img"
                                 src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${imagine_mare}`}
-                                alt="Project main page scrrenshot."
+                                alt="Project main page screenshot."
                             ></img>
                         </div>
 

@@ -4,13 +4,16 @@ import ProjectDetails from "../projectDetails/projectDetails";
 
 function Project({ match }) {
     // useEfect() is used to run the fechItem function once the Project component is mounted
+    // https://reactjs.org/docs/hooks-effect.html
+    // ”match” is an object from ”this.props” object
+    // https://scotch.io/courses/using-react-router-4/route-params
     useEffect((match) => {
         fetchItem();
     }, []);
 
     // initialising state with an empty object
     const [item, setItem] = useState({});
-
+    // console.log("Project 'match':", match);
     const id = parseInt(match.params.id_proiect);
 
     const fetchItem = async () => {

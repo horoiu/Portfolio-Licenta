@@ -17,7 +17,7 @@ function Portfolio() {
         const data = await fetch("http://localhost:4000/projects");
         const items = await data.json();
 
-        // console.log("Portfolio.js: items.data=", items.data);
+        console.log("Portfolio.js: items.data=", items.data);
         setItems(items.data);
     };
 
@@ -40,7 +40,6 @@ function Portfolio() {
                             <Card.Text>{item.nume_categorie}</Card.Text>
                             <Link
                                 to={`/portfolio/project=${item.id_proiect}`}
-                                data={item[index]}
                                 className="btn btn-info btn-lg"
                             >
                                 More details

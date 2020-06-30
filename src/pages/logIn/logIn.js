@@ -114,6 +114,7 @@ class LogIn extends Component {
                         </div>
                         <div className="form-group">
                             <input
+                                // type="password" if we keep this, we will have autocompleted fields ???
                                 className="form-control"
                                 id="password"
                                 name="password"
