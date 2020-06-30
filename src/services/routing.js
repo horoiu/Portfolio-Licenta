@@ -18,17 +18,17 @@ class Routing extends Component {
             <div>
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/about" component={About} />
+                    <Route path="/about" exact component={About} />
                     <Route path="/portfolio" exact component={Portfolio} />
                     <Route
                         path="/portfolio/project=:id_proiect"
                         component={Project}
                     />
-                    <Route path="/resume" component={Resume} />
-                    <Route path="/contact" component={Contact} />
-                    <Route path="/logIn" component={LogIn} />
-                    <Route path="/logOut" component={LogOut} />
-                    <Route path="/addProject" component={AddProject} />
+                    <Route path="/resume" exact component={Resume} />
+                    <Route path="/contact" exact component={Contact} />
+                    <Route path="/logIn" exact component={LogIn} />
+                    <Route path="/logOut" exact component={LogOut} />
+                    <Route path="/addProject" exact component={AddProject} />
                     <Route component={notFound} />
                 </Switch>
             </div>
