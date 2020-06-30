@@ -7,13 +7,14 @@ import { MDBContainer } from "mdbreact";
 class LogIn extends Component {
     constructor(props) {
         super(props);
-        // inintializind empty state for 'user' and 'password'
+        // inintializing empty state for 'user', 'password' and 'errMessage'
         this.state = {
             user: "",
             password: "",
             errMessage: "",
         };
     }
+
     // updates the state value depending on which input field
     // got modified by sending the 'attribute'
     handleChange = (e, attr) => {
