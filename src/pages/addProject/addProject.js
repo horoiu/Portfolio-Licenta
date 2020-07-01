@@ -66,7 +66,9 @@ class addProject extends Component {
             body: JSON.stringify(this.state), // We send data in JSON format
         })
             .then((response) => response.json())
-            .then((data) => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
+            .then((data) =>
+                console.log("Success on writing to DataBase:", data)
+            ) // Manipulate the data retrieved back, if we want to do something with it
             .catch((err) => console.log(err)); // Do something with the error
 
         // redirect to "/portfolio" page after sucessfuly adding new project
@@ -91,6 +93,7 @@ class addProject extends Component {
         ) {
             return false;
         }
+        console.log("AddProject state:", this.state);
         return true;
     }
 

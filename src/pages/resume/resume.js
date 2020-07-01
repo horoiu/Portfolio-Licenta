@@ -11,36 +11,19 @@ class Resume extends Component {
         this.setState({ numPages });
     };
 
-    goToPrevPage = () =>
-        this.setState((state) => ({ pageNumber: state.pageNumber - 1 }));
-    goToNextPage = () =>
-        this.setState((state) => ({ pageNumber: state.pageNumber + 1 }));
-
     render() {
         const { pageNumber, numPages } = this.state;
-
         return (
-            <main className="resume mt-5">
-                {/* for future project, the <nav> element will render buttons for navigation
-                between document pages */}
-                {/* <nav>
-                    <button onClick={this.goToPrevPage}>Prev</button>
-                    <button onClick={this.goToNextPage}>Next</button>
-                </nav> */}
-
+            <main className="resume mt-5 mb-5">
                 <div className="text-center row d-flex justify-content-center fluid mb-3">
                     <Document
                         file="CV-2019.pdf"
-                        className="resume-file mt-2"
+                        className="resume-file mt-3 mb-4"
                         onLoadSuccess={this.onDocumentLoadSuccess}
                     >
                         <Page pageNumber={pageNumber} width={600} />
                     </Document>
                 </div>
-
-                <p>
-                    Page {pageNumber} of {numPages}
-                </p>
             </main>
         );
     }

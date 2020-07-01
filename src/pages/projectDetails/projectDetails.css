@@ -3,6 +3,6 @@
 }
 
 .projectDetails {
-    background-color: #acd9f5;
+    background-color: var(--project-bg-color);
     height: 92vh;
 }

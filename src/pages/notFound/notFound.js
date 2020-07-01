@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import "./notFound.css";
 
-// This can also be a functional component since we do not use state
-
 function notFound(props) {
     return (
         <div className="notFound pt-5">
