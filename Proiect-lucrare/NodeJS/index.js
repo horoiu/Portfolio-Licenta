@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
 const multer = require("multer");
+const fs = require("fs");
 
 const app = express();
 
@@ -52,7 +53,7 @@ app.get("/projects", (req, res) => {
 
 ////////////////////////////////////
 
-// upload files to server
+// Upload files to server
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -118,6 +119,8 @@ app.put("/addProject", (req, res) => {
 
 app.delete("/delProject", (req, res) => {
     const id = req.body.id_proiect;
+    const imgS = req.body.fisier_imagine;
+    const imgB = req.body.imagine_mare;
 
     const DELETE_PROJECT_QUERY = `DELETE FROM proiect WHERE id_proiect='${id}';`;
 
@@ -125,7 +128,22 @@ app.delete("/delProject", (req, res) => {
         if (err) {
             return res.send(err);
         } else {
-            // console.log("results:", res);
+            // if deletion from DataBase is successfull,
+            // then proceed and delete project images
+            fs.unlink(`../portfolio-app/public/projects-img/${imgS}`, function (
+                err
+            ) {
+                if (err) throw err;
+                else console.log(`File ${imgS} deleted!`);
+            });
+
+            fs.unlink(`../portfolio-app/public/projects-img/${imgB}`, function (
+                err
+            ) {
+                if (err) throw err;
+                else console.log(`File ${imgB} deleted!`);
+            });
+
             return res.json({
                 data: results,
             });

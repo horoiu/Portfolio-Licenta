@@ -9,6 +9,7 @@ class ProjectDetails extends Component {
     render() {
         const {
             imagine_mare,
+            fisier_imagine,
             nume_proiect,
             prezentare,
             data_proiect,
@@ -16,7 +17,7 @@ class ProjectDetails extends Component {
             nume_categorie,
             id_proiect,
         } = this.props.data;
-        // console.log("projectDetails: this.props=", this.props.data);
+        console.log("projectDetails: this.props=", this.props.data);
 
         const convertDate = (date) => {
             const year = new Date(date).getFullYear();
@@ -34,7 +35,7 @@ class ProjectDetails extends Component {
             win.focus();
         };
 
-        const deleteProject = (e, id) => {
+        const deleteProject = (e, id, imagine_mare, fisier_imagine) => {
             e.preventDefault();
             console.log("Delete button - Project ID:", id);
 
@@ -45,7 +46,7 @@ class ProjectDetails extends Component {
                     Accept: "application/json",
                 },
                 // We convert the React state to JSON and send it as the DELETE body
-                body: JSON.stringify(id),
+                body: JSON.stringify(id, imagine_mare, fisier_imagine),
             })
                 .then(function (response) {
                     return response.json();
@@ -55,6 +56,7 @@ class ProjectDetails extends Component {
                         "Success on deleting from DataBase:",
                         data.data
                     );
+                    // deleteImages(imagine_mare, fisier_imagine);
                 })
                 .catch((err) =>
                     console.log("Error on Delete from Database fetch:", err)
@@ -122,7 +124,11 @@ class ProjectDetails extends Component {
                                         variant="danger"
                                         size="lg"
                                         onClick={(e) =>
-                                            deleteProject(e, { id_proiect })
+                                            deleteProject(e, {
+                                                id_proiect,
+                                                fisier_imagine,
+                                                imagine_mare,
+                                            })
                                         }
                                     >
                                         Delete Project

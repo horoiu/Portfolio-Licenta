@@ -20,6 +20,7 @@ class Contact extends Component {
     // updates the state value depending on which input field
     // got modified by sending the 'attribute'
     handleChange = (e, attr) => {
+        // e.preventDefault();
         const newState = { ...this.state };
         newState[attr] = e.target.value;
         this.setState(newState);
