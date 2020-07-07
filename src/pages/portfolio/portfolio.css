@@ -1,5 +1,8 @@
 .portfolio {
-    background-color: var(--portfolio-bg-color);
+    /* background-color: var(--portfolio-bg-color); */
+    /* height: 100vh; */
+    background: url(../../img/bg-portfolio.jpg) center center;
+    background-size: cover;
 }
 
 .hoverable {

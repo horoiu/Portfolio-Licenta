@@ -1,15 +1,26 @@
 import React from "react";
 import "./about.css";
 
-function About() {
+function TeamPage() {
     return (
         <main className="about py-5 mt-5">
-            <h1 className="h1-responsive mb-5 mt-5 bold text-black">
-                About page
-            </h1>
-            <h2 className="h2-responsive mt-2 bold">Not yet implemented</h2>
+            <div className="container text-center pb-5">
+                <p>Hello stranger! We are a </p>
+                <p>
+                    {" "}
+                    <span>design </span>agency which
+                </p>
+                <p>
+                    brings <span> dreams</span> to life !!!
+                </p>
+            </div>
+            <div className="container text-center pt-5 mt-5">
+                <p className="about-name mt-5">
+                    Step into <span> &#394;ev&#423;pace</span>
+                </p>
+            </div>
         </main>
     );
 }
 
-export default About;
+export default TeamPage;

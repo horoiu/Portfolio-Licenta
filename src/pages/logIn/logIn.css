@@ -1,6 +1,6 @@
 #log-in {
-    background-color: var(--logIn-form-color);
-    height: 92vh;
+    height: 100vh;
+    background: url(../../img/bg-logIn.jpg) no-repeat center center fixed;
 }
 
 .log-in {

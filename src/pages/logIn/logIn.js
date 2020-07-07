@@ -95,7 +95,7 @@ class LogIn extends Component {
         return (
             <main className="log-in container-fluid mt-5" id="log-in">
                 <MDBContainer>
-                    <h2 className="h2-responsive mt-5">Log In</h2>
+                    <h2 className="h2-responsive mt-5 text-white">Log In</h2>
                     <form
                         className="col-xl-4 col-lg-5 col-md-6 col-sm-8 mt-4 mb-4 py-5 hoverable"
                         id="logIn-form"
