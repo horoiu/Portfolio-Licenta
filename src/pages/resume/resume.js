@@ -12,7 +12,7 @@ class Resume extends Component {
     };
 
     render() {
-        const { pageNumber, numPages } = this.state;
+        const { pageNumber } = this.state;
         return (
             <main className="resume mt-5 mb-5">
                 <div className="text-center row d-flex justify-content-center fluid mb-3">

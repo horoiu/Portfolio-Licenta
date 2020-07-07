@@ -22,8 +22,8 @@ function Portfolio() {
     };
 
     return (
-        <main className="mt-5 ml-3 mr-2">
-            <Row className="portfolio mt-5 mb-5">
+        <main className="mt-5 ">
+            <Row className="portfolio d-flex justify-content-around px-5 py-2 mb-4">
                 {items.map((item, index) => (
                     <Card
                         key={index}
@@ -32,8 +32,7 @@ function Portfolio() {
                     >
                         <Card.Img
                             variant="top"
-                            className="card-img"
-                            // src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${item.fisier_imagine}`}
+                            className="card-img rounded mt-3 z-depth-1-half"
                             src={`/projects-img/${item.fisier_imagine}`}
                         />
                         <Card.Body>

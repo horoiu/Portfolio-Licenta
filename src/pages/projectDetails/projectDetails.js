@@ -71,8 +71,7 @@ class ProjectDetails extends Component {
                     <div className="row d-flex">
                         <div className="col-lg-6 mt-5">
                             <img
-                                className="project_img"
-                                // src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${imagine_mare}`}
+                                className="project_img rounded"
                                 src={`/projects-img/${imagine_mare}`}
                                 alt="Project main page screenshot."
                             ></img>
