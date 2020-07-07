@@ -33,7 +33,8 @@ function Portfolio() {
                         <Card.Img
                             variant="top"
                             className="card-img"
-                            src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${item.fisier_imagine}`}
+                            // src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${item.fisier_imagine}`}
+                            src={`/projects-img/${item.fisier_imagine}`}
                         />
                         <Card.Body>
                             <Card.Title>{item.nume_proiect}</Card.Title>

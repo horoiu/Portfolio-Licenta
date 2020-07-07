@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
+const multer = require("multer");
 
 const app = express();
 
@@ -12,19 +13,6 @@ const connection = mysql.createConnection({
     password: "password",
     database: "portfolio",
 });
-//////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////
-// const SELECT_ALL_PROJECTS_QUERY = "SELECT * FROM admin";
-
-// const connection = mysql.createConnection({
-//     host: "192.168.64.2",
-//     // port: 3306,
-//     user: "root",
-//     password: "password1",
-//     database: "test",
-//     // timeout: 60000,
-// });
 //////////////////////////////////////////////////////////
 
 connection.connect((err) => {
@@ -42,6 +30,7 @@ app.get("/", (req, res) => {
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 ////////////////////////////////////
 
 // GET projects from DataBase
@@ -63,9 +52,44 @@ app.get("/projects", (req, res) => {
 
 ////////////////////////////////////
 
+// upload files to server
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "../portfolio-app/public/projects-img/");
+    },
+    filename: function (req, file, cb) {
+        // console.log("File:", file);
+        cb(null, file.originalname);
+    },
+});
+
+var upload = multer({ storage: storage }).single("file");
+
+app.post("/upload", function (req, res) {
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            return res.status(500).json(err);
+        } else if (err) {
+            return res.status(500).json(err);
+        }
+        return res.status(200).send(req.file);
+    });
+});
+
+////////////////////////////////////
+
 // PUT project to DataBase
+
 app.put("/addProject", (req, res) => {
-    const { name, description, link, imgB, imgS, id_technology } = req.body;
+    const {
+        name,
+        description,
+        link,
+        selectedBigFileName,
+        selectedSmallFileName,
+        id_technology,
+    } = req.body;
 
     // need to convert date format coming from request to match the date format to be wrtitten on DB
     const dateValue = req.body.date;
@@ -73,7 +97,7 @@ app.put("/addProject", (req, res) => {
 
     const PUT_PROJECT_QUERY = `INSERT INTO proiect ( fisier_imagine, imagine_mare, id_categ, nume_proiect, prezentare, data_proiect,link)
     VALUES
-    ( '${imgS}', '${imgB}','${id_technology}', '${name}', '${description}', FROM_UNIXTIME('${date}','%Y-%m-%d'), '${link}' );`;
+    ( '${selectedSmallFileName}', '${selectedBigFileName}','${id_technology}', '${name}', '${description}', FROM_UNIXTIME('${date}','%Y-%m-%d'), '${link}' );`;
 
     connection.query(PUT_PROJECT_QUERY, (err, results) => {
         if (err) {
@@ -94,7 +118,6 @@ app.put("/addProject", (req, res) => {
 
 app.delete("/delProject", (req, res) => {
     const id = req.body.id_proiect;
-    console.log("ID proiect:", id);
 
     const DELETE_PROJECT_QUERY = `DELETE FROM proiect WHERE id_proiect='${id}';`;
 
@@ -153,8 +176,6 @@ app.post("/login", (req, res) => {
         connection.end();
     });
 });
-
-////////////////////////////////////
 
 ////////////////////////////////////
 

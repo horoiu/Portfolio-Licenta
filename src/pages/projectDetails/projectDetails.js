@@ -22,7 +22,7 @@ class ProjectDetails extends Component {
             const year = new Date(date).getFullYear();
             const month = new Date(date).getMonth();
 
-            let data = `${month}-${year}`;
+            let data = `${month + 1}-${year}`;
             return data;
         };
 
@@ -51,9 +51,14 @@ class ProjectDetails extends Component {
                     return response.json();
                 })
                 .then((data) => {
-                    console.log("Data from Delete fetch:", data.data);
+                    console.log(
+                        "Success on deleting from DataBase:",
+                        data.data
+                    );
                 })
-                .catch((err) => console.log("Error from Delete fetch:", err));
+                .catch((err) =>
+                    console.log("Error on Delete from Database fetch:", err)
+                );
 
             //to prevent submitting the form and hard reload after submit
             // only for development mode
@@ -67,7 +72,8 @@ class ProjectDetails extends Component {
                         <div className="col-lg-6 mt-5">
                             <img
                                 className="project_img"
-                                src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${imagine_mare}`}
+                                // src={`https://devspace.ro/Portfolio/Portfolio/images/projects/${imagine_mare}`}
+                                src={`/projects-img/${imagine_mare}`}
                                 alt="Project main page screenshot."
                             ></img>
                         </div>
